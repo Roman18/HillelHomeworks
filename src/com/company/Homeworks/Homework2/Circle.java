@@ -26,7 +26,7 @@ public class Circle {
     }
 
     public boolean containsPoint(Point p) {
-        double d = Math.sqrt((p.getX() - center.getX()) + (p.getY() - center.getY()));
-        return  d<radius;
+        double distance = center.distanceTo(p);
+        return distance < radius;
     }
 }

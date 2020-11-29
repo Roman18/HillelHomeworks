@@ -29,4 +29,11 @@ public class Point {
         return Math.sqrt((point.getX() - this.getX()) + (point.getY() - this.getY()));
     }
 
+    @Override
+    public String toString() {
+        return "Point{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }

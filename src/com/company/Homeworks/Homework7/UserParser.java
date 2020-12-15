@@ -3,26 +3,24 @@ package com.company.Homeworks.Homework7;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserParser {
 
 
     private User parse(String user) {
         User userObj;
-        String users[];
-        if (user.matches("(.)+[:][ ]*[@](.)+")) {
+        Pattern pattern=Pattern.compile("(?:([a-zA-Z0-9]+):)?([a-zA-Z0-9]+)(?:@([a-zA-Z0-9]+))?");
+        Matcher matcher=pattern.matcher(user);
+        if (matcher.matches()){
+            if (matcher.group(1)==null){
+                    userObj = new User(matcher.group(2), matcher.group(2), matcher.group(3));
+            }else {
+                userObj=new User(matcher.group(1),matcher.group(2),matcher.group(3));
+            }
+        }else {
             throw new IllegalArgumentException();
-        } else if (user.matches("(.)+[:](.)+[@](.)+")) {
-            users = user.split("[:]|[@]");
-            userObj = new User(users[0], users[1], users[2]);
-        } else if (user.matches("(.)+[@](.)+")) {
-            users = user.split("@");
-            userObj = new User(users[0], users[0], users[1]);
-        } else if (user.matches("(.)+[:](.)+")) {
-            users = user.split(":");
-            userObj = new User(users[0], users[1], null);
-        } else {
-            userObj = new User(user, user, null);
         }
 
         return userObj;

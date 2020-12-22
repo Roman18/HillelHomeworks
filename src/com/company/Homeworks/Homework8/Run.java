@@ -6,7 +6,7 @@ public class Run {
 
 
 
-    
+
     public static void main(String[] args) {
         Integer [] arr={3,2,1};
         String []strings={"hello","bye","world"};

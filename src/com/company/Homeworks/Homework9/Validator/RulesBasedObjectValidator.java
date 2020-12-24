@@ -16,7 +16,9 @@ public class RulesBasedObjectValidator <T> implements ObjectValidator<T> {
     @Override
     public void validator(T t) throws ValidationException {
         for (int i = 0; i <list.size() ; i++) {
-            list.get(i).validate(t);
+            if (!list.get(i).validate(t)){
+                throw new ValidationException(list.get(i).errorMessage());
+            }
         }
     }
 }

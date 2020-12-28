@@ -9,11 +9,7 @@ public class MaxNumberValidatorRule implements ValidatorRule<Number> {
     }
     @Override
     public boolean validate(Number n){
-
-        if (number.intValue()>n.intValue()){
-return true;
-        }
-        return false;
+return number.intValue()>n.intValue();
     }
 
 

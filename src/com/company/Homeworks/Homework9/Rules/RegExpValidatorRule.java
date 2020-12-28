@@ -14,11 +14,7 @@ public class RegExpValidatorRule implements ValidatorRule<String>{
     @Override
     public boolean validate(String s){
         Matcher matcher=pattern.matcher(s);
-        if (matcher.find()){
-            return true;
-        }
-            return false;
-
+        return matcher.find();
 
     }
 

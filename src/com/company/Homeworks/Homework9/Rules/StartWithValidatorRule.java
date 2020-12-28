@@ -9,12 +9,7 @@ public class StartWithValidatorRule implements ValidatorRule<String> {
     }
     @Override
     public boolean validate(String s){
-
-        if (s.startsWith(string)){
-            return true;
-        }
-        return false;
-
+            return s.startsWith(string);
     }
 
     @Override

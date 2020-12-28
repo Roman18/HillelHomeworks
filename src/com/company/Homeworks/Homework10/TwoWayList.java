@@ -44,6 +44,7 @@ public class TwoWayList<T> implements Iterable<T> {
 
     private class TwoWayListIterator implements Iterator<T> {
         Node cur = head;
+
         @Override
         public boolean hasNext() {
             return cur != null;
@@ -59,10 +60,12 @@ public class TwoWayList<T> implements Iterable<T> {
 
     private class TwoWayListIteratorReverse implements Iterator<T> {
         Node cur = tail;
+
         @Override
         public boolean hasNext() {
             return cur != null;
         }
+
         @Override
         public T next() {
             T val = (T) cur.getValue();
@@ -90,13 +93,24 @@ public class TwoWayList<T> implements Iterable<T> {
         return (T) cur.getValue();
     }
 
-    public void remove(int index){
+    public void remove(int index) {
         checkIndex(index);
         Node cur = getNodeByIndex(index);
-        cur.prev.next = cur.next;
-        cur.next.prev=cur.prev;
+        if (cur == head) {
+            cur.next.prev=null;
+            head=cur.next;
+            cur.next=null;
+        } else if (cur == tail) {
+            cur.prev.next = null;
+            tail=cur.prev;
+            cur.prev=null;
+        } else {
+            cur.prev.next = cur.next;
+            cur.next.prev = cur.prev;
+        }
         --size;
     }
+
     public void set(int index, T value) {
         checkIndex(index);
         Node cur = getNodeByIndex(index);

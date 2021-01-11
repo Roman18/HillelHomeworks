@@ -1,41 +1,44 @@
 package com.company.Homeworks.Homework12.WorkWithText;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class WorkText {
 
 
 
-    public Map<String,Integer> getNumbers(String text){
+    public Set<PhoneNumber> getNumbers(String text){
         System.out.println(text);
         String[] array = text.split(" ");
-        Map<String, Integer> map = new HashMap<>();
+        Set<PhoneNumber> set=new HashSet<>();
         for (int i = 0; i < array.length; i++) {
             if (array[i].matches("(\\+380)[0-9]{9}") || array[i].matches("(0)([0-9]){9}")) {
                 if (array[i].matches("(0)([0-9]){9}")){
                     array[i]="+38"+array[i];
                 }
-                if (map.containsKey(array[i])) {
-                    map.put(array[i], map.get(array[i]) + 1);
+                PhoneNumber phoneNumber=new PhoneNumber(array[i]);
+                if (set.contains(phoneNumber)) {
+                    set.add(phoneNumber);
                 } else {
-                    map.put(array[i], 1);
+                    set.add(phoneNumber);
                 }
             }
         }
-        return map;
+        return set.
+                stream().
+                filter(s->s.getCount()==0).
+                collect(Collectors.toSet());
     }
 
+    
     public static void main(String[] args) {
         System.out.println("Phone numbers:");
         String text = "+380987566361 0987566364 +370957666364 +380965535881 0987566364 0987566361 0987666363";
         WorkText wt=new WorkText();
-        Map<String,Integer> map=wt.getNumbers(text);
+        Set<PhoneNumber> set=wt.getNumbers(text);
         System.out.println("Unique phone numbers");
-        for (String s : map.keySet()) {
-            if (map.get(s) == 1) {
-                System.out.println(s);
-            }
+        for (PhoneNumber phoneNumber : set) {
+                System.out.println(phoneNumber);
         }
     }
 }

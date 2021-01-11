@@ -18,24 +18,17 @@ public class Calculator {
         while (true) {
             variant = scanner.nextLine();
             if (variant.matches("[+\\-][0-9]+ (.)+") || variant.equals("END")) {
-                if (variant.startsWith("+")) {
-                    array = variant.split(" ", 2);
-                    if (incomeMap.containsKey(array[1])) {
-                        incomeMap.put(array[1], incomeMap.get(array[1]) + Integer.parseInt(array[0]));
-                    } else {
-                        incomeMap.put(array[1], Integer.parseInt(array[0]));
-                    }
-
-                } else if (variant.startsWith("-")) {
-                    array = variant.split(" ", 2);
-                    if (consMap.containsKey(array[1])) {
-                        consMap.put(array[1], consMap.get(array[1]) + Integer.parseInt(array[0]));
-                    } else {
-                        consMap.put(array[1], Integer.parseInt(array[0]));
-                    }
-                } else {
+                if (variant.equals("END")) {
                     break;
                 }
+                Map<String, Integer> targetMap = variant.startsWith("+") ? incomeMap : consMap;
+                array = variant.split(" ", 2);
+                if (targetMap.containsKey(array[1])) {
+                    targetMap.put(array[1], targetMap.get(array[1]) + Integer.parseInt(array[0]));
+                } else {
+                    targetMap.put(array[1], Integer.parseInt(array[0]));
+                }
+
             } else {
                 System.out.println("Invalid input\nTry again...");
             }

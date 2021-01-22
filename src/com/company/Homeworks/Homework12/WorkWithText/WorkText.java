@@ -30,7 +30,7 @@ public class WorkText {
                 collect(Collectors.toSet());
     }
 
-    
+
     public static void main(String[] args) {
         System.out.println("Phone numbers:");
         String text = "+380987566361 0987566364 +370957666364 +380965535881 0987566364 0987566361 0987666363";

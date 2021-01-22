@@ -26,7 +26,7 @@ public class Main {
         list.add(new StartWithValidatorRule("+3809"));
         ObjectValidator<String> objectValidatorString = new RulesBasedObjectValidator<>(list);
         try {
-            objectValidatorString.validator("+3808766361");
+            objectValidatorString.validator("+3809766361");
         } catch (ValidationException e) {
             System.out.println(e.getMessage());
         }

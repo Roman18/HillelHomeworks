@@ -1,0 +1,16 @@
+Имя: Igor
+Адрес: st. Ostrovsk
+Заказ: Gavaska
+=======
+Имя: Roman
+Адрес: st. Yavornitsky
+Заказ: 4 cheeses
+=======
+Имя: Sasha
+Адрес: st. Filosovska
+Заказ: barbeky
+=======
+Имя: Vasia
+Адрес: street
+Заказ: 4 cheeses
+=======

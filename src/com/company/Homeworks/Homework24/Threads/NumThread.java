@@ -6,9 +6,11 @@ import java.io.*;
 import java.util.Scanner;
 
 public class NumThread implements Runnable {
-    private final File file = new File("res\\numbers.txt");
-    private CommonResource commonResource = new CommonResource();
-
+    private final File file = new File("D:\\Hillel\\src\\com\\company\\Homeworks\\Homework24\\res\\numbers.txt");
+    private CommonResource commonResource;
+    public NumThread(CommonResource commonResource){
+        this.commonResource=commonResource;
+    }
 
     @Override
     public void run() {

@@ -5,7 +5,10 @@ import com.company.Homeworks.Homework24.CommonResource;
 
 
 public class FibThread implements Runnable {
-    private CommonResource commonResource=new CommonResource();
+    private CommonResource commonResource;
+    public FibThread(CommonResource commonResource){
+        this.commonResource=commonResource;
+    }
     @Override
     public void run() {
         System.out.println("Поток 1 начал работу");

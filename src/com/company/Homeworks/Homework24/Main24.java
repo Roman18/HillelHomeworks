@@ -7,9 +7,10 @@ import com.company.Homeworks.Homework24.Threads.NumThread;
 public class Main24 {
 
     public static void main(String[] args) {
-        Thread fibThread=new Thread(new FibThread());
-        Thread numThread=new Thread(new NumThread());
-        Thread fileThread = new Thread(new FileThread());
+        CommonResource cr = new CommonResource();
+        Thread fibThread=new Thread(new FibThread(cr));
+        Thread numThread=new Thread(new NumThread(cr));
+        Thread fileThread = new Thread(new FileThread(cr));
         fibThread.start();
         numThread.start();
         fileThread.start();

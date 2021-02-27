@@ -8,9 +8,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FileThread implements Runnable {
-    private final File file = new File("res\\test.txt");
-    private CommonResource commonResource=new CommonResource();
+    private final File file = new File("D:\\Hillel\\src\\com\\company\\Homeworks\\Homework24\\res\\test.txt");
+    private CommonResource commonResource;
     private List<String> storePhone = new ArrayList<>(); // для хранения номеров вытащенных из считанной строки
+
+    public FileThread(CommonResource commonResource){
+        this.commonResource=commonResource;
+    }
     @Override
     public void run() {
         System.out.println("Поток 3 начал работу");
